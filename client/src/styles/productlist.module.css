@@ -1,0 +1,19 @@
+/* .productlist {
+    
+} */
+
+.productlist__container {
+    width: var(--wsm);
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-gap: 10px;
+}
+
+.productlist__item {
+    border: 1px solid #222;
+    padding: 20px;
+    text-align: center;
+    justify-items: center;
+}

@@ -1,0 +1,21 @@
+.pdetail__container {
+    width: var(--wsm);
+    margin: 0 auto;
+}
+
+.pdetail__product {
+    display: flex;
+    justify-content:center;
+}
+
+.pdetail__product img {
+    height: 400px;
+}
+
+.pdetail__product button {
+    width: 48%;
+    border: none;
+    outline: none;
+    padding: 10px 12.5px;
+    margin-right: 5px;
+}

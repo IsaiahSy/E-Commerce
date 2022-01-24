@@ -1,0 +1,28 @@
+.nav * {
+    color: #9E9E9E;
+    font-family: 'Roboto';
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.nav {
+    width: 100%;
+    padding: 10px 0;
+    font-size: .6em;
+}
+
+.nav__container {
+    width: var(--wsm);
+    margin: 0 auto;
+}
+
+.nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.nav ul li {
+    justify-content: flex-end;
+    padding-left: 10px;
+}

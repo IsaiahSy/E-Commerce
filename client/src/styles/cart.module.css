@@ -1,0 +1,4 @@
+.cart__container {
+    width: var(--wsm);
+    margin: 0 auto;
+}
