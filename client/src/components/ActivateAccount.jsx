@@ -17,6 +17,7 @@ const ActivateAccount = () => {
                 const { data } = await  verifyUserAccount(id);
                 dispatch({ type: SIGN_IN, payload: data });
                 navigate('/');
+                window.location.reload();
             } catch (err) {
                 navigate('/');
             }

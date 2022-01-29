@@ -4,13 +4,33 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto';
-    overflow: hidden;
+    color: #212128;
 }
 
 /* Global variables */
 :root {
-    --wlg: 70%;
+    --wlg: 65%;
     --wmd: 80%;
-    --wsm: 90%;
+    --wsm: 85%;
     --wfull: 100%;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ECEFF1; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #ECEFF1; 
 }

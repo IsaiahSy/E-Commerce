@@ -16,3 +16,6 @@ export const verifyUserAccount = (id) => API.get(`/users/${id}`);
 
 export const fetchAllProducts = () => API.get('/products');
 export const getProductDetail = (id) => API.get(`/products/${id}`);
+
+export const fetchCartProducts = () => API.get('/cart');
+export const addCartProduct = (productData) => API.post('/cart/add', productData);

@@ -1,27 +1,40 @@
 import React, { useState, useEffect } from "react";
 import styles from '../styles/productdetail.module.css';
 
-import { getProductDetail } from "../api";
+import { getProductDetail, addCartProduct } from "../api";
 import { useParams } from 'react-router-dom';
+
+const initialState = {name: "", price: "", itemId: ""};
 
 const ProductDetail = () => {
     const [product, setProduct] = useState([]);
+    const [productData, setProductData] = useState(initialState);
     const { id } = useParams();
 
     useEffect(() => {
         const getProduct = async () => {
+            // const ac = new AbortController(); // Fix for suddenly unmounted component
             const { data } = await getProductDetail(id);
+            
             setProduct(data);
+            
+            setProductData({name: data?.name, 
+                            price: data?.price?.current?.text, 
+                            id: data?.id});
         }
-
         getProduct();
+        // return () => ac.abort(); // Abort both fetches on unmount
     }, []);
 
     const handleBuyNow = () => {
         alert("TODO");
     }
-    const handleAddToCart = () => {
-        alert("TODO");
+    const handleAddToCart = (e) => {
+        e.preventDefault();
+
+        addCartProduct(productData)
+            .then(res => alert(res.data.message))
+            .catch(err => console.log(err))
     }
 
     return (

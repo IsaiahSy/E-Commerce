@@ -5,7 +5,9 @@ import Nav from './Nav';
 const Header = () => {
     return (
         <div className={styles.header}>
-            <Nav />
+            <div className={styles.header__container}>
+                <Nav />
+            </div>
         </div>
     );
 }
