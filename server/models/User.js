@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import Cart from './Cart.js';
 
 const userSchema = mongoose.Schema({
     firstName: {
@@ -25,6 +26,10 @@ const userSchema = mongoose.Schema({
     confirmationCode: {
         type: String,
         unique: true
+    },
+    cart: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Cart"
     },
     date: {
         type: Date,

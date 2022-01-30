@@ -14,7 +14,7 @@ const ActivateAccount = () => {
     useEffect(() => {
         const verifyAccount = async () => {
             try {
-                const { data } = await  verifyUserAccount(id);
+                const { data } = await verifyUserAccount(id);
                 dispatch({ type: SIGN_IN, payload: data });
                 navigate('/');
                 window.location.reload();

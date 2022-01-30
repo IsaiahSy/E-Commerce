@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import styles from '../styles/productdetail.module.css';
 
 import { getProductDetail, addCartProduct } from "../api";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const initialState = {name: "", price: "", itemId: ""};
 
 const ProductDetail = () => {
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const [product, setProduct] = useState([]);
     const [productData, setProductData] = useState(initialState);
+
     const { id } = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getProduct = async () => {
@@ -31,6 +34,8 @@ const ProductDetail = () => {
     }
     const handleAddToCart = (e) => {
         e.preventDefault();
+
+        if(!user) return navigate("/auth/signin");
 
         addCartProduct(productData)
             .then(res => alert(res.data.message))

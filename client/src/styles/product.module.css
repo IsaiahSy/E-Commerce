@@ -1,0 +1,8 @@
+.product h2, 
+.product h3,
+.product h4 {
+    font-weight: normal;
+}
+
+.product h2 { font-size: .8em; }
+.product h4 { font-size: .8em; }

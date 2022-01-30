@@ -2,12 +2,18 @@ import React, { useState, useEffect } from 'react';
 import styles from '../styles/cart.module.css';
 
 import { fetchCartProducts } from '../api';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const [cartProduct, setCartProduct] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const storeProducts = async () => {
+            if(!user) return navigate("/auth/signin");
+
             const { data } = await fetchCartProducts();
 
             setCartProduct(data);
