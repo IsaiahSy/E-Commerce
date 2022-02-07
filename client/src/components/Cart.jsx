@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/cart.module.css';
 
-import { fetchCartProducts } from '../api';
+import { fetchCartProducts, deleteCartProduct } from '../api';
 import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const [cartProduct, setCartProduct] = useState([]);
+    const [productId, setProductId] = useState([]);
 
     const navigate = useNavigate();
 
@@ -34,6 +35,23 @@ const Cart = () => {
 
     const deleteItem = (e) => {
         e.preventDefault();
+        
+        try {
+            productId.map(async (id) => await deleteCartProduct(id));
+            setProductId([]);
+        } catch (err) {
+
+        }
+    }
+    
+    const handleOnClickCheckbox = (e) => {
+        // temporary fix to store selected product IDs
+        if(productId.indexOf(e.target.id) !== -1) {
+            const filteredIds = productId.filter(id => id !== e.target.id);
+            setProductId(filteredIds);
+        } else {
+            setProductId(prevIds => [...prevIds, e.target.id]);
+        }
     }
 
     return (
@@ -51,7 +69,7 @@ const Cart = () => {
 
                         {cartProduct.map(product => <div className={styles.cart__product} key={product?._id}>
                                 <div className={styles.cart__checkbox}>
-                                    <input type="checkbox" name={`select_${product._id}`} />
+                                    <input type="checkbox" name={`select_${product._id}`} id={product._id} onClick={handleOnClickCheckbox}/>
                                 </div>
                                 <div className={styles.cart__nameAndBrand}>
                                     <h2>{product?.name}</h2>

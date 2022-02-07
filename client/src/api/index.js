@@ -19,3 +19,4 @@ export const getProductDetail = (id) => API.get(`/products/${id}`);
 
 export const fetchCartProducts = () => API.get('/cart');
 export const addCartProduct = (productData) => API.post('/cart/add', productData);
+export const deleteCartProduct = (productId) => API.delete('/cart/delete', { data: { productId }});

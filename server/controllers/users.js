@@ -78,12 +78,8 @@ export const verifyUserAccount = async (req, res) => {
 
         if(!verifyUser) return res.status(404);
 
-        await User.updateOne({
-            _id: verifyUser._id,
-            $set: {
-                status: "active"
-            }
-        });
+        // update user status from pending to active
+        await User.updateOne({ _id: verifyUser._id }, {$set: { status: "active" }});
 
         const token = jwt.sign({ 
             email: verifyUser.email, 
